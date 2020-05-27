@@ -20,13 +20,13 @@
 
 <!-- Main[Start] -->
 <!-- ここからinsert.phpにデータを送ります -->
-<form method="post" action="insert.php">
+<form method="post" action="bm_insert.php">
   <div class="jumbotron">
    <fieldset>
     <legend>フリーアンケート</legend>
-     <label>名前：<input type="text" name="name"></label><br>
-     <label>Email：<input type="text" name="email"></label><br>
-     <label><textArea name="naiyou" rows="4" cols="40"></textArea></label><br>
+     <label>BookName：<input type="text" name="bookname"></label><br>
+     <label>BookURL：<input type="text" name="bookurl"></label><br>
+     <label><textArea name="booktext" rows="4" cols="40"></textArea></label><br>
      <input type="submit" value="送信">
     </fieldset>
   </div>
