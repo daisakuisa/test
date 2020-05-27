@@ -1,9 +1,9 @@
 <?php
 //1. POSTデータ取得
 // if(
-//   ! isset($_POS["name"])   || $_POST["name"]=="" ||
-//   ! isset($_POS["email"])  || $_POST["email"]=="" ||
-//   ! isset($_POS["naiyou"]) || $_POST["naiyou"]=="" 
+//   ! isset($_POS["bookname"])   || $_POST["bookname"]=="" ||
+//   ! isset($_POS["bookurl"])  || $_POST["bookurl"]=="" ||
+//   ! isset($_POS["booktext"]) || $_POST["booktext"]=="" 
 // ){
 //    exit('paramError');
 // }
@@ -11,14 +11,14 @@
 
 
 //まず前のphpからデーターを受け取る（この受け取ったデータをもとにbindValueと結びつけるため）
-$name = $_POST["name"];
-$email = $_POST["email"];
-$naiyou = $_POST["naiyou"];
+$name = $_POST["bookname"];
+$email = $_POST["bookurl"];
+$naiyou = $_POST["booktext"];
 
 //2. DB接続します xxxにDB名を入力する
 //ここから作成したDBに接続をしてデータを登録します xxxxに作成したデータベース名を書きます
 try {
-  $pdo = new PDO('mysql:dbname=a_db;charset=utf8;host=localhost','root','');
+  $pdo = new PDO('mysql:dbname=gs_bm_table;charset=utf8;host=localhost','root','');
 } catch (PDOException $e) {
   exit('DbConnectError:'.$e->getMessage());
 }
@@ -26,12 +26,12 @@ try {
 
 //３．データ登録SQL作成 //ここにカラム名を入力する
 //xxx_table(テーブル名)はテーブル名を入力します
-$stmt = $pdo->prepare("INSERT INTO a_table(id, name, email, naiyou,
+$stmt = $pdo->prepare("INSERT INTO gs_bm_table(id, bookname, bookurl, booktext,
 indate )VALUES(NULL, :a1, :a2, :a3, sysdate())");
 
-$stmt->bindValue(':a1', $name, PDO::PARAM_STR);  //Integer（数値の場合 PDO::PARAM_INT)
-$stmt->bindValue(':a2', $email, PDO::PARAM_STR);  //Integer（数値の場合 PDO::PARAM_INT)
-$stmt->bindValue(':a3', $naiyou, PDO::PARAM_STR);  //Integer（数値の場合 PDO::PARAM_INT)
+$stmt->bindValue(':a1', $bookname, PDO::PARAM_STR);  //Integer（数値の場合 PDO::PARAM_INT)
+$stmt->bindValue(':a2', $bookurl, PDO::PARAM_STR);  //Integer（数値の場合 PDO::PARAM_INT)
+$stmt->bindValue(':a3', $booktext, PDO::PARAM_STR);  //Integer（数値の場合 PDO::PARAM_INT)
 $status = $stmt->execute();
 
 //４．データ登録処理後

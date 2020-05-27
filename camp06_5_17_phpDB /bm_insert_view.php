@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>データ登録</title>
+  <title>bookデータ登録</title>
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <style>div{padding: 10px;font-size:16px;}</style>
 </head>
@@ -23,7 +23,7 @@
 <form method="post" action="bm_insert.php">
   <div class="jumbotron">
    <fieldset>
-    <legend>フリーアンケート</legend>
+    <legend>ブックアプリ</legend>
      <label>BookName：<input type="text" name="bookname"></label><br>
      <label>BookURL：<input type="text" name="bookurl"></label><br>
      <label><textArea name="booktext" rows="4" cols="40"></textArea></label><br>
